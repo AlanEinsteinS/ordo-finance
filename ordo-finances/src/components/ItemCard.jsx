@@ -23,19 +23,21 @@ function ItemCard({ item }) {
   };
 
   return (
-    <div className="bg-zinc-900 rounded-lg p-6 border border-zinc-800 hover:border-zinc-700 transition-all group">
-      <div className="flex items-start justify-between mb-4">
-        <div>
-          <h3 className="text-lg font-semibold text-zinc-50 mb-1">{item.name}</h3>
-          <p className="text-xs text-zinc-500 uppercase tracking-wide">{item.category}</p>
-        </div>
-        {discount > 0 && (
-          <div className="flex items-center gap-1 bg-emerald-500/10 text-emerald-500 px-2 py-1 rounded text-xs font-semibold">
-            <Percent size={12} weight="bold" />
-            {discount}%
+    <div className="relative bg-gradient-to-br from-zinc-900 to-zinc-900/50 rounded-xl p-6 border border-zinc-800 hover:border-zinc-700 transition-all duration-300 group hover:shadow-lg hover:shadow-zinc-950/50 hover:-translate-y-1 animate-fade-in">
+      <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/0 via-transparent to-blue-500/0 group-hover:from-emerald-500/5 group-hover:to-blue-500/5 rounded-xl transition-all duration-300 pointer-events-none"></div>
+      <div className="relative">
+        <div className="flex items-start justify-between mb-4">
+          <div>
+            <h3 className="text-lg font-semibold text-zinc-50 mb-1 group-hover:text-emerald-400 transition-colors">{item.name}</h3>
+            <p className="text-xs text-zinc-500 uppercase tracking-wide font-medium">{item.category}</p>
           </div>
-        )}
-      </div>
+          {discount > 0 && (
+            <div className="flex items-center gap-1 bg-gradient-to-r from-emerald-500/20 to-emerald-500/10 text-emerald-400 px-2.5 py-1 rounded-md text-xs font-bold shadow-lg shadow-emerald-500/20 animate-pulse-glow">
+              <Percent size={12} weight="bold" />
+              {discount}%
+            </div>
+          )}
+        </div>
 
       <p className="text-sm text-zinc-400 mb-4 line-clamp-2">{item.description}</p>
 
@@ -124,11 +126,12 @@ function ItemCard({ item }) {
 
         <button
           onClick={handleAddToCart}
-          className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-md font-medium transition-all bg-zinc-50 text-zinc-900 hover:bg-white"
+          className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-semibold transition-all bg-gradient-to-r from-emerald-500 to-emerald-600 text-white hover:from-emerald-600 hover:to-emerald-700 shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 transform hover:scale-105 active:scale-95"
         >
-          <ShoppingCart size={20} weight="regular" />
+          <ShoppingCart size={20} weight="duotone" />
           Adicionar ao Carrinho
         </button>
+      </div>
       </div>
     </div>
   );
